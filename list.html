@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>临时通行证申请</title>
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="shortcut icon" href="http://www.df-sj.cn/attachment/images/global/wechat.jpg" />
+	<!--<link href="http://www.df-sj.cn/app/index.php?i=3&c=utility&a=style&" rel="stylesheet">-->
+	<link rel="stylesheet" href="./css/weui.css"/>
+	<link rel="stylesheet" href="./css/weui.min.css">
+    <script type="text/javascript" src="./js/jweixin-1.0.0.js"></script>
+	<script src="./js/jquery-2.1.4.js"></script>
+
+	<script src="./js/jquery-weui.min.js"></script>
+    	<script type="text/javascript">
+	if(navigator.appName == 'Microsoft Internet Explorer'){
+		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+		}
+	}
+		window.sysinfo = {
+		'uniacid': '3',
+		'acid': '3',
+		'siteroot': 'http://www.df-sj.cn/',
+		'siteurl': 'http://www.df-sj.cn/app/index.php?i=3&c=entry&weid=3&id=18&do=mydayu_form&m=dayu_form',
+		'attachurl': 'http://www.df-sj.cn/attachment/',
+		'attachurl_local': 'http://www.df-sj.cn/attachment/',
+		'MODULE_URL': 'http://www.df-sj.cn/addons/dayu_form/',
+		'cookie' : {'pre': '21f9_'}
+	};
+	
+	// jssdk config 对象
+	jssdkconfig = null || {};
+	
+	// 是否启用调试
+	jssdkconfig.debug = false;
+	
+	jssdkconfig.jsApiList = [
+		'checkJsApi',
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage',
+		'onMenuShareQQ',
+		'onMenuShareWeibo',
+		'hideMenuItems',
+		'showMenuItems',
+		'hideAllNonBaseMenuItem',
+		'showAllNonBaseMenuItem',
+		'translateVoice',
+		'startRecord',
+		'stopRecord',
+		'onRecordEnd',
+		'playVoice',
+		'pauseVoice',
+		'stopVoice',
+		'uploadVoice',
+		'downloadVoice',
+		'chooseImage',
+		'previewImage',
+		'uploadImage',
+		'downloadImage',
+		'getNetworkType',
+		'openLocation',
+		'getLocation',
+		'hideOptionMenu',
+		'showOptionMenu',
+		'closeWindow',
+		'scanQRCode',
+		'chooseWXPay',
+		'openProductSpecificView',
+		'addCard',
+		'chooseCard',
+		'openCard'
+	];
+	
+	</script>
+	
+	<script>
+	function _removeHTMLTag(str) {
+		if(typeof str == 'string'){
+			str = str.replace(/<script[^>]*?>[\s\S]*?<\/script>/g,'');
+			str = str.replace(/<style[^>]*?>[\s\S]*?<\/style>/g,'');
+			str = str.replace(/<\/?[^>]*>/g,'');
+			str = str.replace(/\s+/g,'');
+			str = str.replace(/&nbsp;/ig,'');
+		}
+		return str;
+	}
+	</script>
+</head>
+<body id="message" ontouchstart>
+<div class="weui_tab">
+<style>
+body{background-color:#f0f0f0;font-weight:300;font-family: "微软雅黑";}
+*{padding:0;margin:0;}
+a{color:#666}
+.info{background-color:#fff8e1;font-weight:300;}
+.weui_tab a{color:#555}
+.weui_navbar{line-height:20px;}
+.weui_media_box.weui_media_text .weui_media_info {margin-top: 0px;}
+.weui_tabbar{height:50px;}
+.weui_tabbar_icon {height: 20px;}
+.weui_bar_item_on .weui_tabbar_icon i {color: #09BB07;}
+.weui_cell_bd i {color:#666;}
+
+.dayu_cells {overflow: hidden;position: relative;}
+.sticky-fixed {width: 100%;position: fixed;bottom: 0;z-index:9998;}
+.list{
+	background:#fff;
+	width:98%;
+	margin:10px auto;
+	box-shadow: 0 2px 5px #ccc;
+}
+.list ul{
+	list-style: none;
+	padding:2.5%;
+}
+.list ul li{
+	border-bottom:2px #dedede dashed;
+	padding:10px 0;
+	position: relative;
+	font-size: 12px;;
+}
+.list ul li a{
+	position: absolute;
+	width: 60px;
+	height: 25px;
+	line-height: 20px;
+	border: 1px #6d8f99 solid;
+	border-radius:4px;
+	line-height: 25px;
+	right: 5px;
+	bottom: 15px;
+	text-align: center;
+	color: #6d8f99;
+	display: block;
+	
+}
+.list ul li .tip{
+	position: absolute;
+	right: 5px;
+	bottom: 55px;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+}
+.list ul li .tip i{
+	font-size: 12px;
+	height: 25px;
+	line-height: 25px;
+	float: left;
+	margin-right: 5px;	
+}
+.list ul li:last-child{
+	border-bottom: 0;
+}
+/*等待支付*/
+.list ul .pay a{
+	color: #fff;
+	border: 1px #fe1c1e solid;
+	background: #fe1c1e;
+	font-weight: bold;
+}
+.list ul .pay .tip {
+	color: #fe1c1e;
+}
+.list ul .pay .tip i{
+	color: #fe1c1e;
+} 
+
+/*取消*/
+.list ul .cancel a{
+	color: #fff;
+	border: 1px #a6a6a6 solid;
+	background: #a6a6a6;
+	font-weight: bold;
+}
+.list ul .cancel .tip {
+	color: #a6a6a6;
+}
+.list ul .cancel .tip i:before{
+	color: #a6a6a6;
+} 
+/*正在计价*/
+.list ul .wait a{
+	color: #fff;
+	border: 1px #fd945b solid;
+	background: #fd945b;
+	font-weight: bold;
+}
+.list ul .wait .tip {
+	color: #fd945b;
+}
+.list ul .wait .tip i:before{
+	color: #fd945b;
+} 
+
+</style>
+<style>
+.record-start-btn {width:16px;height:16px;margin-right:5px;}
+.weui_cells {margin-top:0;}
+</style>
+<div class="weui_tab_bd">
+	<div class="weui_cells_title">
+		<a class="f14"><img class="img-circle" src="" alt="" style="width:30px;height:30px;"><span class="inline"> </span></a>
+	</div>
+								
+	<div id="list" class="list">
+		<ul>
+			<li class="pay">
+				<p>投保单号：201725647895</p>
+				<p>投保单位：永和保险</p>
+				<p>投保车辆：浙Acy768</p>
+				<p>支付金额：---元</p>
+				<p>投保时间：2017-02-24 21:43:56</p>
+				<p class="tip"><i class="weui_icon_warn"></i>等待支付</p>
+				<a href="#">支付</a>
+			</li>
+			<li class="cancel">
+				<p>投保单号：201725647895</p>
+				<p>投保单位：永和保险</p>
+				<p>投保车辆：浙Acy768</p>
+				<p>支付金额：---元</p>
+				<p>投保时间：2017-02-24 21:43:56</p>
+				<p class="tip"><i class="weui_icon_cancel"></i>已取消</p>
+				<a href="#">删除</a>
+			</li>
+			<li class="wait">
+				<p>投保单号：201725647895</p>
+				<p>投保单位：永和保险</p>
+				<p>投保车辆：浙Acy768</p>
+				<p>支付金额：---元</p>
+				<p>投保时间：2017-02-24 21:43:56</p>
+				<p class="tip"><i class="weui_icon_info "></i>正在计价</p>
+				<a href="#">取消</a>
+			</li>
+		</ul>
+	</div>
+
+</div>
+</div><!--weui_tab_bd-->
+	<div class="weui_tabbar">
+		<a href="./index.php?i=3&c=entry&weid=3&id=18&do=Mydayu_form&m=dayu_form" class="weui_tabbar_item weui_bar_item_on">
+			<div class="weui_tabbar_icon">
+				<i class="iconfont f20">&#xe600;</i>
+			</div>
+			<p class="weui_tabbar_label">全部</p>
+		</a>
+		<a href="./index.php?i=3&c=entry&weid=3&id=18&status=0&do=Mydayu_form&m=dayu_form" class="weui_tabbar_item ">
+			<div class="weui_tabbar_icon">
+				<i class="iconfont f20">&#xe61f;</i>
+			</div>
+			<p class="weui_tabbar_label">待受理</p>
+		</a>
+		<a href="./index.php?i=3&c=entry&weid=3&id=18&status=1&do=Mydayu_form&m=dayu_form" class="weui_tabbar_item ">
+			<div class="weui_tabbar_icon">
+				<i class="iconfont f20">&#xe60a;</i>
+			</div>
+			<p class="weui_tabbar_label">受理中</p>
+		</a>
+		<a href="./index.php?i=3&c=entry&weid=3&id=18&status=2&do=Mydayu_form&m=dayu_form" class="weui_tabbar_item ">
+			<div class="weui_tabbar_icon">
+				<i class="iconfont f20">&#xe614;</i>
+			</div>
+			<p class="weui_tabbar_label">已取消</p>
+		</a>
+		<a href="./index.php?i=3&c=entry&weid=3&id=18&status=3&do=Mydayu_form&m=dayu_form" class="weui_tabbar_item ">
+			<div class="weui_tabbar_icon">
+				<i class="iconfont f20">&#xe613;</i>
+			</div>
+			<p class="weui_tabbar_label">审核通过</p>
+		</a>
+	</div>
+</div>
+	<script type="text/javascript">
+	
+	wx.config(jssdkconfig);
+	
+	var $_share = {"title":"\u5e38\u719f\u4ea4\u8b66","imgUrl":"","desc":"","link":"http:\/\/www.df-sj.cn\/app\/index.php?i=3&c=entry&weid=3&id=18&do=mydayu_form&m=dayu_form&u=17"};
+	
+	if(typeof sharedata == 'undefined'){
+		sharedata = $_share;
+	} else {
+		sharedata['title'] = sharedata['title'] || $_share['title'];
+		sharedata['desc'] = sharedata['desc'] || $_share['desc'];
+		sharedata['link'] = sharedata['link'] || $_share['link'];
+		sharedata['imgUrl'] = sharedata['imgUrl'] || $_share['imgUrl'];
+	}
+
+	function tomedia(src) {
+		if(typeof src != 'string')
+			return '';
+		if(src.indexOf('http://') == 0 || src.indexOf('https://') == 0) {
+			return src;
+		} else if(src.indexOf('../addons') == 0 || src.indexOf('../attachment') == 0) {
+			src=src.substr(3);
+			return window.sysinfo.siteroot + src;
+		} else if(src.indexOf('./resource') == 0) {
+			src=src.substr(2);
+			return window.sysinfo.siteroot + 'app/' + src;
+		} else if(src.indexOf('images/') == 0) {
+			return window.sysinfo.attachurl+ src;
+		}
+	}
+	
+	if(sharedata.imgUrl == ''){
+		var _share_img = $('body img:eq(0)').attr("src");
+		if(_share_img == ""){
+			sharedata['imgUrl'] = window.sysinfo.attachurl + 'images/global/wechat_share.png';
+		} else {
+			sharedata['imgUrl'] = tomedia(_share_img);
+		}
+	}
+	
+	if(sharedata.desc == ''){
+		var _share_content = _removeHTMLTag($('body').html());
+		if(typeof _share_content == 'string'){
+			sharedata.desc = _share_content.replace($_share['title'], '')
+		}
+	}
+	
+	wx.ready(function () {
+		wx.onMenuShareAppMessage(sharedata);
+		wx.onMenuShareTimeline(sharedata);
+		wx.onMenuShareQQ(sharedata);
+		wx.onMenuShareWeibo(sharedata);
+	});
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('showOptionMenu');
+	});
+	</script>
+</body>
+</html>

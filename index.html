@@ -1,0 +1,973 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>临时通行证申请</title>
+	<meta name="format-detection" content="telephone=no, address=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link rel="shortcut icon" href="http://www.df-sj.cn/attachment/images/global/wechat.jpg" />
+	<!--<link href="http://www.df-sj.cn/app/index.php?i=3&c=utility&a=style&" rel="stylesheet">-->
+	<link rel="stylesheet" href="./css/weui.css"/>
+	<link rel="stylesheet" href="./css/weui.min.css">
+    <script type="text/javascript" src="./js/jweixin-1.0.0.js"></script>
+	<script src="./js/jquery-2.1.4.js"></script>
+
+	<script src="./js/jquery-weui.min.js"></script>
+    <script type="text/javascript">
+	/*if(navigator.appName == 'Microsoft Internet Explorer'){
+		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
+			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
+		}
+	}*/
+		window.sysinfo = {
+		'uniacid': '3',
+		'acid': '3',
+		'siteroot': 'http://www.df-sj.cn/',
+		'siteurl': 'http://www.df-sj.cn/app/index.php?i=3&c=entry&do=dayu_form&id=18&m=dayu_form',
+		'attachurl': 'http://www.df-sj.cn/attachment/',
+		'attachurl_local': 'http://www.df-sj.cn/attachment/',
+		'MODULE_URL': 'http://www.df-sj.cn/addons/dayu_form/',
+		'cookie' : {'pre': '21f9_'}
+	};
+	
+	// jssdk config 对象
+	jssdkconfig = null || {};
+	
+	// 是否启用调试
+	jssdkconfig.debug = true;
+	/*jssdkconfig.appId=data.appId;
+	jssdkconfig.timeStamp=data.nonceStr;
+	jssdkconfig.signature = data.signature;*/
+	jssdkconfig.jsApiList = [
+		'checkJsApi',
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage',
+		'onMenuShareQQ',
+		'onMenuShareWeibo',
+		'hideMenuItems',
+		'showMenuItems',
+		'hideAllNonBaseMenuItem',
+		'showAllNonBaseMenuItem',
+		'translateVoice',
+		'startRecord',
+		'stopRecord',
+		'onRecordEnd',
+		'playVoice',
+		'pauseVoice',
+		'stopVoice',
+		'uploadVoice',
+		'downloadVoice',
+		'chooseImage',
+		'previewImage',
+		'uploadImage',
+		'downloadImage',
+		'getNetworkType',
+		'openLocation',
+		'getLocation',
+		'hideOptionMenu',
+		'showOptionMenu',
+		'closeWindow',
+		'scanQRCode',
+		'chooseWXPay',
+		'openProductSpecificView',
+		'addCard',
+		'chooseCard',
+		'openCard'
+	];
+	
+	</script>
+	
+	<script>
+	function _removeHTMLTag(str) {
+		if(typeof str == 'string'){
+			str = str.replace(/<script[^>]*?>[\s\S]*?<\/script>/g,'');
+			str = str.replace(/<style[^>]*?>[\s\S]*?<\/style>/g,'');
+			str = str.replace(/<\/?[^>]*>/g,'');
+			str = str.replace(/\s+/g,'');
+			str = str.replace(/&nbsp;/ig,'');
+		}
+		return str;
+	}
+	</script>
+</head>
+<body id="message" ontouchstart>
+<div class="weui_tab">
+<style>
+body{background-color:#fbf9ff;}
+.weui-header .weui-header-left,.weui-header .weui-header-right{top: 5px;}
+.dayu-header {padding: 25px 0 0;}
+
+.weui_textarea_counter span {font-size:12px;}
+.weui_label span{color: #E64340;}
+.weui-popup-container{z-index:9999;}
+.weui_cell_select .weui_cell_td {padding-left: 1em;}
+.weui_cell_select .weui_cell_hd .weui_select {line-height:45px;padding:0 25px 0 5px;color: #555;}
+
+.weui_extra_area {z-index:0;}
+.record .weui_cells:first-child {margin-top:30px;}
+.record .weui_cells {margin:0;}
+.record img{width:1.2rem;height:1.2rem;}
+.m-img {background-position: top center;padding-bottom: 0;}
+.m-img img{width:100%;height:auto;}
+.m-masker {background-color: rgba(0, 0, 0, 0);}
+
+#allmap{width:100%;height:200px;display:block}
+</style>
+    <div class="weui_tab_bd">
+	<div id="popup" class="weui-popup-container">
+		<div class="weui-popup-modal">
+			<h2 class="title tcenter f-green f20" style="margin-top:20px;">临时通行证申请</h2>
+			<section>
+								<div class="weui-popup-bd"></div>
+			</section>
+			<p class="p"><a href="javascript:;" class="weui_btn bg-blue close-popup">关闭</a></p>
+		</div>
+	</div>
+		<div class="m-box">
+		<div class="m-img"><img src="http://www.df-sj.cn/attachment/images/3/2017/03/rDrSzqX0eFfo0IIF8Z4Jr00f0pfi8J.jpg"></div>
+		<div class="m-masker"> 
+			<div class="weui_media_box weui_media_text" style="position: absolute;bottom:0px;width:90%;">
+					</div>
+		</div> 
+	</div>
+		<!--	<form method="post" action="./index.php?i=3&c=entry&do=index&m=dayu_form"  enctype="multipart/form-data" >	-->
+<form action="./index.php?i=3&c=entry&weid=3&id=18&do=dayu_form&m=dayu_form" class="" enctype="multipart/form-data" method="POST" id="form">
+<input type="hidden" name="repeat" value="b168b47f2a4e10de7d9b44925a052f74">
+
+
+<div class="weui_cells weui_cells_form" style="margin:0;">
+			<div class="weui_cell">
+		<div class="weui_cell_hd"><label class="weui_label">车牌号<span>*</span></label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" name="field_614_" type="text" value="" placeholder="请输入车牌号" required>
+				</div>
+		<div class="weui_cell_ft"></div>
+	</div>
+						<div class="weui_cell">
+			<div class="weui_cell_hd"><label for="" class="weui_label">申请通行日期<span>*</span></label></div>
+				<div class="weui_cell_bd weui_cell_primary">
+									<input class="weui_input" name="field_620_" type="text" value="" placeholder="请选择申请通行日期" id="620">
+<script>
+      $("#620").calendar({
+        value: ['2017-06-18'],
+						minDate:'2017-06-18',
+		maxDate:'2017-06-21',
+		      });
+</script>
+								</div>
+		</div>
+		</div>
+
+	
+<div class="weui_cells weui_cells_access">
+    <div class="weui_cell">
+        <div class="weui_cell_hd"><label class="weui_label">姓名<span>*</span></label></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <input class="weui_input" id="member" name="member" type="text" value="" placeholder="请输入姓名">
+        </div>
+    </div>
+    <div class="weui_cell">
+		<div class="weui_cell_hd"><label class="weui_label">手机<span>*</span></label></div>
+        <div class="weui_cell_bd weui_cell_primary ">
+            <input class="weui_input" id="mobile" name="mobile" type="tel" pattern="[0-9]*" value="" placeholder="请输入手机号">
+        </div>
+    </div>
+												<div class="weui_cell">
+		<div class="weui_cell_hd"><label class="weui_label">驾驶证号<span>*</span></label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+					<input class="weui_input" name="field_611_" type="text" value="" placeholder="请输入驾驶证号" required>
+				</div>
+		<div class="weui_cell_ft"></div>
+	</div>
+	<div class="weui_cell">
+		<div class="weui_cell_hd"><label for="name" class="weui_label">车辆类型<span>*</span></label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+			<input type="text" class="weui_input" id="612" name="field_612_" placeholder="请选择车辆类型" value="">
+		</div>
+		<div class="weui_cell_ft"></div>
+	</div>
+    <script>
+      $("#612").select({
+        title: "车辆类型",
+        items: [
+				"小型车",
+				"大型车",
+				"挂车",
+		        ],
+        onChange: function(d) {
+		console.log(this, d);
+        }
+      });
+    </script>
+	<div class="weui_cell">
+		<div class="weui_cell_hd"><label for="name" class="weui_label">是否危险品车辆<span>*</span></label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+			<input type="text" class="weui_input" id="613" name="field_613_" placeholder="请选择是否危险品车辆" value="">
+		</div>
+		<div class="weui_cell_ft"></div>
+	</div>
+    <script>
+      $("#613").select({
+        title: "是否危险品车辆",
+        items: [
+				"否",
+				"是",
+		        ],
+        onChange: function(d) {
+		console.log(this, d);
+        }
+      });
+    </script>
+	</div>
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">驾驶证照片<span>*</span></div>
+                        <div class="weui_cell_ft"></div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">   
+                            <input type="hidden" name="field_615_" accept="image/*" capture="camera" value="" />                        
+                            <image class="weui_uploader_file weui_uploader_status" id="show615" src="./images/nopic.jpg" />
+                        </ul>
+                        <div class="weui_uploader_input_wrp" id="615">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+          var btn = document.getElementById('615');
+          //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+          var images = {
+              localId: [],
+              serverId: []
+          };
+
+
+//	document.querySelector('#show615').onclick = function () {
+//		wx.previewImage({
+//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
+//		});
+//	};
+          btn.onclick = function(){
+              wx.chooseImage({
+					count: 1,
+					sourceType: ['album', 'camera'],
+					success:function(res){
+                        images.localId = res.localIds;
+                        var i = 0, length = images.localId.length;
+	alert(123)
+                        document.getElementById('show615').src = images.localId;
+						var wxUpload = function() {
+	                        wx.uploadImage({
+	                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+	                            isShowProgressTips: 1, // 默认为1，显示进度提示
+	                            success: function (res) {
+	                                i++;
+	                                //将上传成功后的serverId保存到serverid
+	                                images.serverId.push(res.serverId);
+	                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
+									var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
+									$.post(url, function(dat){
+									var dat = eval("("+dat+")");
+										$.toast(dat.message, "success");
+										$('input[name="field_615_"]').val(dat.path);
+									});
+	                                if(i < length){
+	                                    wxUpload();
+	                                }
+	                            },
+								fail: function (res) {
+									alert(JSON.stringify(res));
+								}
+	                        });
+							
+						};
+						wxUpload();
+
+                   }
+              });
+  
+          }
+</script>
+<div class="weui_cells weui_cells_form">
+				
+				
+				
+																
+						
+						
+						
+						
+								
+		
+		</div>
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">行驶证照片<span>*</span></div>
+                        <div class="weui_cell_ft"></div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">   
+                            <input type="hidden" name="field_616_" accept="image/*" capture="camera" value="" />                        
+                            <image class="./images/nopic.jpg" />
+                        </ul>
+                        <div class="weui_uploader_input_wrp" id="616">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+          var btn = document.getElementById('616');
+          //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+          var images = {
+              localId: [],
+              serverId: []
+          };
+
+
+//	document.querySelector('#show616').onclick = function () {
+//		wx.previewImage({
+//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
+//		});
+//	};
+          btn.onclick = function(){
+              wx.chooseImage({
+					count: 1,
+					sourceType: ['album', 'camera'],
+					success:function(res){
+
+                        images.localId = res.localIds;
+                        var i = 0, length = images.localId.length;
+
+                        document.getElementById('show616').src = images.localId;
+					var wxUpload = function() {
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                i++;
+                                //将上传成功后的serverId保存到serverid
+                                images.serverId.push(res.serverId);
+                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
+								var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
+								$.post(url, function(dat){
+								var dat = eval("("+dat+")");
+									$.toast(dat.message, "success");
+									$('input[name="field_616_"]').val(dat.path);
+								});
+                                if(i < length){
+                                    wxUpload();
+                                }
+                            },
+							fail: function (res) {
+								alert(JSON.stringify(res));
+							}
+                        });
+						
+					};
+					wxUpload();
+
+                   }
+              });
+  
+          }
+</script>
+<div class="weui_cells weui_cells_form"></div>
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">保单照片<span>*</span></div>
+                        <div class="weui_cell_ft"></div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">   
+                            <input type="hidden" name="field_617_" accept="image/*" capture="camera" value="" />                        
+                            <image class="weui_uploader_file weui_uploader_status" id="show617" src="./images/nopic.jpg" />
+                        </ul>
+                        <div class="weui_uploader_input_wrp" id="617">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+          var btn = document.getElementById('617');
+          //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+          var images = {
+              localId: [],
+              serverId: []
+          };
+
+
+//	document.querySelector('#show617').onclick = function () {
+//		wx.previewImage({
+//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
+//		});
+//	};
+          btn.onclick = function(){
+              wx.chooseImage({
+					count: 1,
+					sourceType: ['album', 'camera'],
+					success:function(res){
+
+                        images.localId = res.localIds;
+                        var i = 0, length = images.localId.length;
+
+                        document.getElementById('show617').src = images.localId;
+					var wxUpload = function() {
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                i++;
+                                //将上传成功后的serverId保存到serverid
+                                images.serverId.push(res.serverId);
+                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
+								var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
+								$.post(url, function(dat){
+								var dat = eval("("+dat+")");
+									$.toast(dat.message, "success");
+									$('input[name="field_617_"]').val(dat.path);
+								});
+                                if(i < length){
+                                    wxUpload();
+                                }
+                            },
+							fail: function (res) {
+								alert(JSON.stringify(res));
+							}
+                        });
+						
+					};
+					wxUpload();
+
+                   }
+              });
+  
+          }
+</script>
+<div class="weui_cells weui_cells_form"></div>
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">车辆照片（前）<span>*</span></div>
+                        <div class="weui_cell_ft"></div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">   
+                            <input type="hidden" name="field_618_" accept="image/*" capture="camera" value="" />                        
+                            <image class="weui_uploader_file weui_uploader_status" id="show618" src="./images/nopic.jpg" />
+                        </ul>
+                        <div class="weui_uploader_input_wrp" id="618">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+          var btn = document.getElementById('618');
+          //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+          var images = {
+              localId: [],
+              serverId: []
+          };
+
+
+//	document.querySelector('#show618').onclick = function () {
+//		wx.previewImage({
+//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
+//		});
+//	};
+          btn.onclick = function(){
+              wx.chooseImage({
+					count: 1,
+					sourceType: ['album', 'camera'],
+					success:function(res){
+
+                        images.localId = res.localIds;
+                        var i = 0, length = images.localId.length;
+
+                        document.getElementById('show618').src = images.localId;
+					var wxUpload = function() {
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                i++;
+                                //将上传成功后的serverId保存到serverid
+                                images.serverId.push(res.serverId);
+                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
+								var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
+								$.post(url, function(dat){
+								var dat = eval("("+dat+")");
+									$.toast(dat.message, "success");
+									$('input[name="field_618_"]').val(dat.path);
+								});
+                                if(i < length){
+                                    wxUpload();
+                                }
+                            },
+							fail: function (res) {
+								alert(JSON.stringify(res));
+							}
+                        });
+						
+					};
+					wxUpload();
+
+                   }
+              });
+  
+          }
+</script>
+<div class="weui_cells weui_cells_form"></div>
+
+    <div class="weui_cells weui_cells_form">
+        <div class="weui_cell">
+            <div class="weui_cell_bd weui_cell_primary">
+                <div class="weui_uploader">
+                    <div class="weui_uploader_hd weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">车辆照片（后）<span>*</span></div>
+                        <div class="weui_cell_ft"></div>
+                    </div>
+                    <div class="weui_uploader_bd">
+                        <ul class="weui_uploader_files">   
+                            <input type="hidden" name="field_619_" accept="image/*" capture="camera" value="" />                        
+                            <image class="./images/nopic.jpg" />
+                        </ul>
+                        <div class="weui_uploader_input_wrp" id="619">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+          var btn = document.getElementById('619');
+          //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
+          var images = {
+              localId: [],
+              serverId: []
+          };
+
+
+//	document.querySelector('#show619').onclick = function () {
+//		wx.previewImage({
+//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
+//		});
+//	};
+          btn.onclick = function(){
+              wx.chooseImage({
+					count: 1,
+					sourceType: ['album', 'camera'],
+					success:function(res){
+
+                        images.localId = res.localIds;
+                        var i = 0, length = images.localId.length;
+
+                        document.getElementById('show619').src = images.localId;
+					var wxUpload = function() {
+                        wx.uploadImage({
+                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+                            isShowProgressTips: 1, // 默认为1，显示进度提示
+                            success: function (res) {
+                                i++;
+                                //将上传成功后的serverId保存到serverid
+                                images.serverId.push(res.serverId);
+                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
+								var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
+								$.post(url, function(dat){
+								var dat = eval("("+dat+")");
+									$.toast(dat.message, "success");
+									$('input[name="field_619_"]').val(dat.path);
+								});
+                                if(i < length){
+                                    wxUpload();
+                                }
+                            },
+							fail: function (res) {
+								alert(JSON.stringify(res));
+							}
+                        });
+						
+					};
+					wxUpload();
+
+                   }
+              });
+  
+          }
+</script>
+<div class="weui_cells weui_cells_form">		
+	<div class="weui_cell">
+		<div class="weui_cell_hd"><label for="name" class="weui_label">行驶路线</label></div>
+			<div class="weui_cell_bd weui_cell_primary">
+				<input type="text" class="weui_input" id="621" name="field_621_" placeholder="请选择行驶路线" value="">
+			</div>
+	</div>
+    <script>
+      $("#621").select({
+        title: "行驶路线",
+        multi: true,
+        items: [
+					{
+				title: "枫林路",
+				value: "枫林路"
+			},
+					{
+				title: "报慈北路",
+				value: "报慈北路"
+			},
+					{
+				title: "报慈路",
+				value: "报慈路"
+			},
+					{
+				title: "常兴路",
+				value: "常兴路"
+			},
+					{
+				title: "枫泾路",
+				value: "枫泾路"
+			},
+					{
+				title: "阜湖路",
+				value: "阜湖路"
+			},
+					{
+				title: "海虞北路",
+				value: "海虞北路"
+			},
+					{
+				title: "海虞南路",
+				value: "海虞南路"
+			},
+					{
+				title: "衡山路",
+				value: "衡山路"
+			},
+					{
+				title: "红旗南路",
+				value: "红旗南路"
+			},
+					{
+				title: "花溪路",
+				value: "花溪路"
+			},
+					{
+				title: "花园浜路",
+				value: "花园浜路"
+			},
+					{
+				title: "环城北路",
+				value: "环城北路"
+			},
+					{
+				title: "环城东路",
+				value: "环城东路"
+			},
+					{
+				title: "环城南路",
+				value: "环城南路"
+			},
+					{
+				title: "金沙江路",
+				value: "金沙江路"
+			},
+					{
+				title: "李闸路",
+				value: "李闸路"
+			},
+					{
+				title: "闽江路",
+				value: "闽江路"
+			},
+					{
+				title: "南沙路",
+				value: "南沙路"
+			},
+					{
+				title: "琴湖路",
+				value: "琴湖路"
+			},
+					{
+				title: "青墩塘路",
+				value: "青墩塘路"
+			},
+					{
+				title: "沙家浜路",
+				value: "沙家浜路"
+			},
+					{
+				title: "嵩山路",
+				value: "嵩山路"
+			},
+					{
+				title: "锁澜路",
+				value: "锁澜路"
+			},
+					{
+				title: "泰安街",
+				value: "泰安街"
+			},
+					{
+				title: "泰山路",
+				value: "泰山路"
+			},
+					{
+				title: "西门大街",
+				value: "西门大街"
+			},
+					{
+				title: "湘江路",
+				value: "湘江路"
+			},
+					{
+				title: "新颜东路",
+				value: "新颜东路"
+			},
+					{
+				title: "甬江路",
+				value: "甬江路"
+			},
+					{
+				title: "虞山北路",
+				value: "虞山北路"
+			},
+					{
+				title: "元和路",
+				value: "元和路"
+			},
+					{
+				title: "长江路",
+				value: "长江路"
+			},
+					{
+				title: "昭文路",
+				value: "昭文路"
+			},
+					{
+				title: "珠江路",
+				value: "珠江路"
+			},
+		        ],
+				max:5,
+		        onChange: function(d) {
+		console.log(this, d);
+        }
+      });
+    </script>
+	<div class="weui_cell">
+        <div class="weui_cell_bd weui_cell_primary">
+		<textarea class="weui_textarea" name="field_622_" rows="3" placeholder="请填写其他路线（请自行输入）"></textarea>
+            <div class="weui_textarea_counter"><span id='textarea_num'>限200字</span></div>
+        </div>
+    </div>
+          <script>
+$(function(){
+	$(".weui_textarea").on("input paste" , function(){
+				var num_left=$(this).val().length;
+				if((200-num_left)<0){
+					$("#textarea_num").text("超出"+(num_left-200)+"字");
+					$("#textarea_num").css("color","#E44443");
+				}else{
+					$("#textarea_num").text((num_left)+"字");
+					$("#textarea_num").css("color","#999999");
+				}
+			});
+
+})
+</script> 		
+	</div>
+	
+    <div class="weui_btn_area row">
+									<input type="hidden" name="token" value="Ioo4" />
+        <button class="weui_btn weui_btn_primary" name="submit" type="submit" id="showTool">立 即 提 交</button>
+    </div>
+</form>
+</div>
+	<div class="weui_msg">
+		<div class="weui_extra_area">
+			<a href="./index.php?i=3&c=entry&weid=3&id=18&do=mydayu_form&m=dayu_form"><i class="iconfont">&#xe622;</i> 我的申请</a>
+		</div>
+	</div>
+<script type="text/javascript">
+	$('#form').submit(function(){
+       var member = /^[\u4E00-\u9FA5]{1,6}$/;
+			if($.trim($(':input[name="member"]').val())=='' || !member.test($.trim($('input[name="member"]').val()))){
+				$.toast("请正确输入姓名", "cancel");
+				return false;
+			}
+       var mobile = /^(((13[0-9]{1})|(14[7-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+			if($.trim($(':input[name="mobile"]').val())=='' || !mobile.test($.trim($('input[name="mobile"]').val()))){
+				$.toast("请输入正确的手机号码", "cancel");
+				return false;
+			}
+			if($('input[name="field_611_"]').val()!="")
+			{
+				var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X)$)/;
+				var jiashizheng=$.trim($('input[name="field_611_"]').val());
+				if (reg.test(jiashizheng) === false) {
+					$.toast("您输入的驾驶证号不合法", "cancel");
+					return false;
+				 }				
+				
+			}
+			if($('input[name="field_614_"]').val()!="")
+			{
+				var reg=/(^[\u4E00-\u9FA5]{1}[A-Z0-9]{6}$)|(^[\u4E00-\u9FA5]{1}[A-Z0-9]{5}[挂]{1}$)/;
+				var chepaihao=$.trim($('input[name="field_614_"]').val());
+				if (reg.test(chepaihao) === false) {
+					$.toast("您输入的车牌号不合法", "cancel");
+					return false;
+				 }
+			}
+														if($.trim($(':text[name="field_611_"]').val()) == '') {
+			$.toast("驾驶证号 不能为空", "cancel");
+			return false;
+		}
+																						if($.trim($(':text[name="field_612_"]').val()) == '') {
+			$.toast("车辆类型 不能为空", "cancel");
+			return false;
+		}
+						if($.trim($(':input[name="field_612_"]').val()) == '') {
+			$.toast("车辆类型 不能为空", "cancel");
+			return false;
+		}
+																				if($.trim($(':text[name="field_613_"]').val()) == '') {
+			$.toast("是否危险品车辆 不能为空", "cancel");
+			return false;
+		}
+						if($.trim($(':input[name="field_613_"]').val()) == '') {
+			$.toast("是否危险品车辆 不能为空", "cancel");
+			return false;
+		}
+																				if($.trim($(':text[name="field_614_"]').val()) == '') {
+			$.toast("车牌号 不能为空", "cancel");
+			return false;
+		}
+																										if($.trim($(':input[name="field_615_"]').val()) == '') {
+			$.toast("驾驶证照片 必须上传", "cancel");
+			return false;
+		}
+																						if($.trim($(':input[name="field_616_"]').val()) == '') {
+			$.toast("行驶证照片 必须上传", "cancel");
+			return false;
+		}
+																						if($.trim($(':input[name="field_617_"]').val()) == '') {
+			$.toast("保单照片 必须上传", "cancel");
+			return false;
+		}
+																						if($.trim($(':input[name="field_618_"]').val()) == '') {
+			$.toast("车辆照片（前） 必须上传", "cancel");
+			return false;
+		}
+																						if($.trim($(':input[name="field_619_"]').val()) == '') {
+			$.toast("车辆照片（后） 必须上传", "cancel");
+			return false;
+		}
+																		if($.trim($(':text[name="field_620_"]').val()) == '') {
+			$.toast("申请通行日期 不能为空", "cancel");
+			return false;
+		}
+																												
+		return true;
+	});
+</script>
+</div>
+	<script type="text/javascript">
+	
+	wx.config(jssdkconfig);
+	/*wx.config({      
+ 7                 debug: false,
+ 8                 appId: '${wxconfig.appID}',
+ 9                 timestamp: '${wxconfig.timestamp}',
+10                 nonceStr: '${wxconfig.nonce}',
+11                 signature: '${wxconfig.signature}',
+12                  jsApiList: [
+13                              'chooseImage',
+14                              'uploadImage',
+15                              'downloadImage'
+16                          ] 
+17             });*/
+	var $_share = {"title":"\u4e34\u65f6\u901a\u884c\u8bc1\u7533\u8bf7","imgUrl":"http:\/\/www.df-sj.cn\/attachment\/images\/3\/2017\/03\/rDrSzqX0eFfo0IIF8Z4Jr00f0pfi8J.jpg","desc":"","link":"http:\/\/www.df-sj.cn\/app\/index.php?i=3&c=entry&do=dayu_form&id=18&m=dayu_form&u=17"};
+	
+	if(typeof sharedata == 'undefined'){
+		sharedata = $_share;
+	} else {
+		sharedata['title'] = sharedata['title'] || $_share['title'];
+		sharedata['desc'] = sharedata['desc'] || $_share['desc'];
+		sharedata['link'] = sharedata['link'] || $_share['link'];
+		sharedata['imgUrl'] = sharedata['imgUrl'] || $_share['imgUrl'];
+	}
+
+	function tomedia(src) {
+		if(typeof src != 'string')
+			return '';
+		if(src.indexOf('http://') == 0 || src.indexOf('https://') == 0) {
+			return src;
+		} else if(src.indexOf('../addons') == 0 || src.indexOf('../attachment') == 0) {
+			src=src.substr(3);
+			return window.sysinfo.siteroot + src;
+		} else if(src.indexOf('./resource') == 0) {
+			src=src.substr(2);
+			return window.sysinfo.siteroot + 'app/' + src;
+		} else if(src.indexOf('images/') == 0) {
+			return window.sysinfo.attachurl+ src;
+		}
+	}
+	
+	if(sharedata.imgUrl == ''){
+		var _share_img = $('body img:eq(0)').attr("src");
+		if(_share_img == ""){
+			sharedata['imgUrl'] = window.sysinfo.attachurl + 'images/global/wechat_share.png';
+		} else {
+			sharedata['imgUrl'] = tomedia(_share_img);
+		}
+	}
+	
+	if(sharedata.desc == ''){
+		var _share_content = _removeHTMLTag($('body').html());
+		if(typeof _share_content == 'string'){
+			sharedata.desc = _share_content.replace($_share['title'], '')
+		}
+	}
+	
+	wx.ready(function () {
+		wx.onMenuShareAppMessage(sharedata);
+		wx.onMenuShareTimeline(sharedata);
+		wx.onMenuShareQQ(sharedata);
+		wx.onMenuShareWeibo(sharedata);
+	});
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('showOptionMenu');
+	});
+	</script>
+</body>
+</html>
