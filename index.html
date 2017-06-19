@@ -295,45 +295,32 @@ body{background-color:#fbf9ff;}
 							
 						};
 						wxUpload();
-
                    }
               });
   
           }
 </script>
+<div class="weui_cells weui_cells_form"></div>
 <div class="weui_cells weui_cells_form">
-				
-				
-				
-																
-						
-						
-						
-						
-								
-		
+	<div class="weui_cell">
+		<div class="weui_cell_bd weui_cell_primary">
+			<div class="weui_uploader">
+				<div class="weui_uploader_hd weui_cell">
+					<div class="weui_cell_bd weui_cell_primary">行驶证照片<span>*</span></div>
+					<div class="weui_cell_ft"></div>
+				</div>
+				<div class="weui_uploader_bd">
+					<ul class="weui_uploader_files">   
+						<input type="hidden" name="field_616_" accept="image/*" capture="camera" value="" />                        
+						<image class="./images/nopic.jpg" />
+					</ul>
+					<div class="weui_uploader_input_wrp" id="616">
+					</div>
+				</div>
+			</div>
 		</div>
-
-    <div class="weui_cells weui_cells_form">
-        <div class="weui_cell">
-            <div class="weui_cell_bd weui_cell_primary">
-                <div class="weui_uploader">
-                    <div class="weui_uploader_hd weui_cell">
-                        <div class="weui_cell_bd weui_cell_primary">行驶证照片<span>*</span></div>
-                        <div class="weui_cell_ft"></div>
-                    </div>
-                    <div class="weui_uploader_bd">
-                        <ul class="weui_uploader_files">   
-                            <input type="hidden" name="field_616_" accept="image/*" capture="camera" value="" />                        
-                            <image class="./images/nopic.jpg" />
-                        </ul>
-                        <div class="weui_uploader_input_wrp" id="616">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	</div>
+</div>
 <script>
           var btn = document.getElementById('616');
           //定义images用来保存选择的本地图片ID，和上传后的服务器图片ID
@@ -819,84 +806,84 @@ $(function(){
 	</div>
 <script type="text/javascript">
 	$('#form').submit(function(){
-       var member = /^[\u4E00-\u9FA5]{1,6}$/;
-			if($.trim($(':input[name="member"]').val())=='' || !member.test($.trim($('input[name="member"]').val()))){
-				$.toast("请正确输入姓名", "cancel");
+        var member = /^[\u4E00-\u9FA5]{1,6}$/;
+		if($.trim($(':input[name="member"]').val())=='' || !member.test($.trim($('input[name="member"]').val()))){
+			$.toast("请正确输入姓名", "cancel");
+			return false;
+		}
+        var mobile = /^(((13[0-9]{1})|(14[7-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+		if($.trim($(':input[name="mobile"]').val())=='' || !mobile.test($.trim($('input[name="mobile"]').val()))){
+			$.toast("请输入正确的手机号码", "cancel");
+			return false;
+		}
+		if($('input[name="field_611_"]').val()!="")
+		{
+			var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X)$)/;
+			var jiashizheng=$.trim($('input[name="field_611_"]').val());
+			if (reg.test(jiashizheng) === false) {
+				$.toast("您输入的驾驶证号不合法", "cancel");
+				return false;
+			}			
+			
+		}
+		if($('input[name="field_614_"]').val()!="")
+		{
+			var reg=/(^[\u4E00-\u9FA5]{1}[A-Z0-9]{6}$)|(^[\u4E00-\u9FA5]{1}[A-Z0-9]{5}[挂]{1}$)/;
+			var chepaihao=$.trim($('input[name="field_614_"]').val());
+			if (reg.test(chepaihao) === false) {
+				$.toast("您输入的车牌号不合法", "cancel");
 				return false;
 			}
-       var mobile = /^(((13[0-9]{1})|(14[7-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-			if($.trim($(':input[name="mobile"]').val())=='' || !mobile.test($.trim($('input[name="mobile"]').val()))){
-				$.toast("请输入正确的手机号码", "cancel");
-				return false;
-			}
-			if($('input[name="field_611_"]').val()!="")
-			{
-				var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X)$)/;
-				var jiashizheng=$.trim($('input[name="field_611_"]').val());
-				if (reg.test(jiashizheng) === false) {
-					$.toast("您输入的驾驶证号不合法", "cancel");
-					return false;
-				 }				
-				
-			}
-			if($('input[name="field_614_"]').val()!="")
-			{
-				var reg=/(^[\u4E00-\u9FA5]{1}[A-Z0-9]{6}$)|(^[\u4E00-\u9FA5]{1}[A-Z0-9]{5}[挂]{1}$)/;
-				var chepaihao=$.trim($('input[name="field_614_"]').val());
-				if (reg.test(chepaihao) === false) {
-					$.toast("您输入的车牌号不合法", "cancel");
-					return false;
-				 }
-			}
-														if($.trim($(':text[name="field_611_"]').val()) == '') {
+		}
+		if($.trim($(':text[name="field_611_"]').val()) == '') {
 			$.toast("驾驶证号 不能为空", "cancel");
 			return false;
 		}
-																						if($.trim($(':text[name="field_612_"]').val()) == '') {
+		if($.trim($(':text[name="field_612_"]').val()) == '') {
 			$.toast("车辆类型 不能为空", "cancel");
 			return false;
 		}
-						if($.trim($(':input[name="field_612_"]').val()) == '') {
+		if($.trim($(':input[name="field_612_"]').val()) == '') {
 			$.toast("车辆类型 不能为空", "cancel");
 			return false;
 		}
-																				if($.trim($(':text[name="field_613_"]').val()) == '') {
+		if($.trim($(':text[name="field_613_"]').val()) == '') {
 			$.toast("是否危险品车辆 不能为空", "cancel");
 			return false;
 		}
-						if($.trim($(':input[name="field_613_"]').val()) == '') {
+		if($.trim($(':input[name="field_613_"]').val()) == '') {
 			$.toast("是否危险品车辆 不能为空", "cancel");
 			return false;
 		}
-																				if($.trim($(':text[name="field_614_"]').val()) == '') {
+		if($.trim($(':text[name="field_614_"]').val()) == '') {
 			$.toast("车牌号 不能为空", "cancel");
 			return false;
 		}
-																										if($.trim($(':input[name="field_615_"]').val()) == '') {
+		if($.trim($(':input[name="field_615_"]').val()) == '') {
 			$.toast("驾驶证照片 必须上传", "cancel");
 			return false;
 		}
-																						if($.trim($(':input[name="field_616_"]').val()) == '') {
+		if($.trim($(':input[name="field_616_"]').val()) == '') {
 			$.toast("行驶证照片 必须上传", "cancel");
 			return false;
 		}
-																						if($.trim($(':input[name="field_617_"]').val()) == '') {
+		if($.trim($(':input[name="field_617_"]').val()) == '') {
 			$.toast("保单照片 必须上传", "cancel");
 			return false;
 		}
-																						if($.trim($(':input[name="field_618_"]').val()) == '') {
+		if($.trim($(':input[name="field_618_"]').val()) == '') {
 			$.toast("车辆照片（前） 必须上传", "cancel");
 			return false;
 		}
-																						if($.trim($(':input[name="field_619_"]').val()) == '') {
+		if($.trim($(':input[name="field_619_"]').val()) == '') {
 			$.toast("车辆照片（后） 必须上传", "cancel");
 			return false;
 		}
-																		if($.trim($(':text[name="field_620_"]').val()) == '') {
+		if($.trim($(':text[name="field_620_"]').val()) == '') {
 			$.toast("申请通行日期 不能为空", "cancel");
 			return false;
 		}
-																												
+																											
 		return true;
 	});
 </script>
@@ -905,9 +892,9 @@ $(function(){
 	
 	wx.config(jssdkconfig);
 	/*wx.config({      
- 7                 debug: false,
- 8                 appId: '${wxconfig.appID}',
- 9                 timestamp: '${wxconfig.timestamp}',
+7                 debug: false,
+8                 appId: '${wxconfig.appID}',
+9                 timestamp: '${wxconfig.timestamp}',
 10                 nonceStr: '${wxconfig.nonce}',
 11                 signature: '${wxconfig.signature}',
 12                  jsApiList: [
@@ -916,7 +903,13 @@ $(function(){
 15                              'downloadImage'
 16                          ] 
 17             });*/
-	var $_share = {"title":"\u4e34\u65f6\u901a\u884c\u8bc1\u7533\u8bf7","imgUrl":"http:\/\/www.df-sj.cn\/attachment\/images\/3\/2017\/03\/rDrSzqX0eFfo0IIF8Z4Jr00f0pfi8J.jpg","desc":"","link":"http:\/\/www.df-sj.cn\/app\/index.php?i=3&c=entry&do=dayu_form&id=18&m=dayu_form&u=17"};
+	var $_share = {
+		"title":"\u4e34\u65f6\u901a\u884c\u8bc1\u7533\u8bf7",
+		//"imgUrl":"http:\/\/www.df-sj.cn\/attachment\/images\/3\/2017\/03\/rDrSzqX0eFfo0IIF8Z4Jr00f0pfi8J.jpg",
+		"imgUrl":"http://192.168.22.212:3000/bonnie/github/car/images/banner.jpg",
+		"desc":"",
+		"link":"http:\/\/www.df-sj.cn\/app\/index.php?i=3&c=entry&do=dayu_form&id=18&m=dayu_form&u=17"
+	};
 	
 	if(typeof sharedata == 'undefined'){
 		sharedata = $_share;
@@ -927,7 +920,7 @@ $(function(){
 		sharedata['imgUrl'] = sharedata['imgUrl'] || $_share['imgUrl'];
 	}
 
-	function tomedia(src) {
+	/*function tomedia(src) {
 		if(typeof src != 'string')
 			return '';
 		if(src.indexOf('http://') == 0 || src.indexOf('https://') == 0) {
@@ -957,9 +950,12 @@ $(function(){
 		if(typeof _share_content == 'string'){
 			sharedata.desc = _share_content.replace($_share['title'], '')
 		}
-	}
+	}*/
 	
 	wx.ready(function () {
+		for(var i in sharedata){
+			alert(sharedata[i])
+		}
 		wx.onMenuShareAppMessage(sharedata);
 		wx.onMenuShareTimeline(sharedata);
 		wx.onMenuShareQQ(sharedata);
