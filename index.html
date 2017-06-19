@@ -24,7 +24,7 @@
 		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
 			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
 		}
-	}*/
+	}
 		window.sysinfo = {
 		'uniacid': '3',
 		'acid': '3',
@@ -34,7 +34,7 @@
 		'attachurl_local': 'http://www.df-sj.cn/attachment/',
 		'MODULE_URL': 'http://www.df-sj.cn/addons/dayu_form/',
 		'cookie' : {'pre': '21f9_'}
-	};
+	};*/
 	
 	// jssdk config 对象
 	jssdkconfig = null || {};
@@ -124,45 +124,42 @@ body{background-color:#fbf9ff;}
 		<div class="weui-popup-modal">
 			<h2 class="title tcenter f-green f20" style="margin-top:20px;">临时通行证申请</h2>
 			<section>
-								<div class="weui-popup-bd"></div>
+				<div class="weui-popup-bd"></div>
 			</section>
 			<p class="p"><a href="javascript:;" class="weui_btn bg-blue close-popup">关闭</a></p>
 		</div>
 	</div>
-		<div class="m-box">
+	<div class="m-box">
 		<div class="m-img"><img src="http://www.df-sj.cn/attachment/images/3/2017/03/rDrSzqX0eFfo0IIF8Z4Jr00f0pfi8J.jpg"></div>
 		<div class="m-masker"> 
-			<div class="weui_media_box weui_media_text" style="position: absolute;bottom:0px;width:90%;">
-					</div>
+			<div class="weui_media_box weui_media_text" style="position: absolute;bottom:0px;width:90%;"></div>
 		</div> 
 	</div>
-		<!--	<form method="post" action="./index.php?i=3&c=entry&do=index&m=dayu_form"  enctype="multipart/form-data" >	-->
+<!--<form method="post" action="./index.php?i=3&c=entry&do=index&m=dayu_form"  enctype="multipart/form-data" >	-->
 <form action="./index.php?i=3&c=entry&weid=3&id=18&do=dayu_form&m=dayu_form" class="" enctype="multipart/form-data" method="POST" id="form">
 <input type="hidden" name="repeat" value="b168b47f2a4e10de7d9b44925a052f74">
-
-
 <div class="weui_cells weui_cells_form" style="margin:0;">
-			<div class="weui_cell">
+	<div class="weui_cell">
 		<div class="weui_cell_hd"><label class="weui_label">车牌号<span>*</span></label></div>
 		<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" name="field_614_" type="text" value="" placeholder="请输入车牌号" required>
-				</div>
+			<input class="weui_input" name="field_614_" type="text" value="" placeholder="请输入车牌号" required>
+		</div>
 		<div class="weui_cell_ft"></div>
 	</div>
-						<div class="weui_cell">
-			<div class="weui_cell_hd"><label for="" class="weui_label">申请通行日期<span>*</span></label></div>
-				<div class="weui_cell_bd weui_cell_primary">
-									<input class="weui_input" name="field_620_" type="text" value="" placeholder="请选择申请通行日期" id="620">
-<script>
-      $("#620").calendar({
-        value: ['2017-06-18'],
-						minDate:'2017-06-18',
-		maxDate:'2017-06-21',
-		      });
-</script>
-								</div>
+	<div class="weui_cell">
+		<div class="weui_cell_hd"><label for="" class="weui_label">申请通行日期<span>*</span></label></div>
+		<div class="weui_cell_bd weui_cell_primary">
+			<input class="weui_input" name="field_620_" type="text" value="" placeholder="请选择申请通行日期" id="620">
+			<script>
+				$("#620").calendar({
+					value: ['2017-06-18'],
+					minDate:'2017-06-18',
+					maxDate:'2017-06-21',
+				});
+			</script>
 		</div>
-		</div>
+	</div>
+</div>
 
 	
 <div class="weui_cells weui_cells_access">
@@ -178,11 +175,11 @@ body{background-color:#fbf9ff;}
             <input class="weui_input" id="mobile" name="mobile" type="tel" pattern="[0-9]*" value="" placeholder="请输入手机号">
         </div>
     </div>
-												<div class="weui_cell">
+	<div class="weui_cell">
 		<div class="weui_cell_hd"><label class="weui_label">驾驶证号<span>*</span></label></div>
 		<div class="weui_cell_bd weui_cell_primary">
-					<input class="weui_input" name="field_611_" type="text" value="" placeholder="请输入驾驶证号" required>
-				</div>
+			<input class="weui_input" name="field_611_" type="text" value="" placeholder="请输入驾驶证号" required>
+		</div>
 		<div class="weui_cell_ft"></div>
 	</div>
 	<div class="weui_cell">
@@ -253,21 +250,19 @@ body{background-color:#fbf9ff;}
               localId: [],
               serverId: []
           };
-
-
-//	document.querySelector('#show615').onclick = function () {
-//		wx.previewImage({
-//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
-//		});
-//	};
+		//	document.querySelector('#show615').onclick = function () {
+		//		wx.previewImage({
+		//			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
+		//		});
+		//	};
           btn.onclick = function(){
               wx.chooseImage({
 					count: 1,
-					sourceType: ['album', 'camera'],
+					sizeType:['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+					sourceType: ['album', 'camera'],     // 可以指定来源是相册还是相机，默认二者都有
 					success:function(res){
-                        images.localId = res.localIds;
+                        images.localId = res.localIds;   // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
                         var i = 0, length = images.localId.length;
-	alert(123)
                         document.getElementById('show615').src = images.localId;
 						var wxUpload = function() {
 	                        wx.uploadImage({
@@ -280,7 +275,7 @@ body{background-color:#fbf9ff;}
 	                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
 									var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
 									$.post(url, function(dat){
-									var dat = eval("("+dat+")");
+										var dat = eval("("+dat+")");
 										$.toast(dat.message, "success");
 										$('input[name="field_615_"]').val(dat.path);
 									});
@@ -328,8 +323,6 @@ body{background-color:#fbf9ff;}
               localId: [],
               serverId: []
           };
-
-
 //	document.querySelector('#show616').onclick = function () {
 //		wx.previewImage({
 //			urls: ['http://www.df-sj.cn/addons/dayu_form/template/weui/images/nopic.jpg',images.serverId]
@@ -345,32 +338,32 @@ body{background-color:#fbf9ff;}
                         var i = 0, length = images.localId.length;
 
                         document.getElementById('show616').src = images.localId;
-					var wxUpload = function() {
-                        wx.uploadImage({
-                            localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
-                            isShowProgressTips: 1, // 默认为1，显示进度提示
-                            success: function (res) {
-                                i++;
-                                //将上传成功后的serverId保存到serverid
-                                images.serverId.push(res.serverId);
-                                //(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
-								var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
-								$.post(url, function(dat){
-								var dat = eval("("+dat+")");
-									$.toast(dat.message, "success");
-									$('input[name="field_616_"]').val(dat.path);
-								});
-                                if(i < length){
-                                    wxUpload();
-                                }
-                            },
-							fail: function (res) {
-								alert(JSON.stringify(res));
-							}
-                        });
-						
-					};
-					wxUpload();
+						var wxUpload = function() {
+							wx.uploadImage({
+								localId: images.localId[i], // 需要上传的图片的本地ID，由chooseImage接口获得
+								isShowProgressTips: 1,      // 默认为1，显示进度提示
+								success: function (res) {
+									i++;
+									//将上传成功后的serverId保存到serverid
+									images.serverId.push(res.serverId);
+									//(serverId 即 media_id,公众号此后可根据该media_id来获取多媒体)将上传的图片通过AJAX远程提交给php下载到本地服务器
+									var url = "./index.php?i=3&c=entry&type=image&do=uploads&m=dayu_form&serverId=" + res.serverId + "&localId=" + i;
+									$.post(url, function(dat){
+									var dat = eval("("+dat+")");
+										$.toast(dat.message, "success");
+										$('input[name="field_616_"]').val(dat.path);
+									});
+									if(i < length){
+										wxUpload();
+									}
+								},
+								fail: function (res) {
+									alert(JSON.stringify(res));
+								}
+							});
+							
+						};
+						wxUpload();
 
                    }
               });
@@ -623,99 +616,99 @@ body{background-color:#fbf9ff;}
         title: "行驶路线",
         multi: true,
         items: [
-					{
+			{
 				title: "枫林路",
 				value: "枫林路"
 			},
-					{
+			{
 				title: "报慈北路",
 				value: "报慈北路"
 			},
-					{
+			{
 				title: "报慈路",
 				value: "报慈路"
 			},
-					{
+			{
 				title: "常兴路",
 				value: "常兴路"
 			},
-					{
+			{
 				title: "枫泾路",
 				value: "枫泾路"
 			},
-					{
+			{
 				title: "阜湖路",
 				value: "阜湖路"
 			},
-					{
+			{
 				title: "海虞北路",
 				value: "海虞北路"
 			},
-					{
+			{
 				title: "海虞南路",
 				value: "海虞南路"
 			},
-					{
+			{
 				title: "衡山路",
 				value: "衡山路"
 			},
-					{
+			{
 				title: "红旗南路",
 				value: "红旗南路"
 			},
-					{
+			{
 				title: "花溪路",
 				value: "花溪路"
 			},
-					{
+			{
 				title: "花园浜路",
 				value: "花园浜路"
 			},
-					{
+			{
 				title: "环城北路",
 				value: "环城北路"
 			},
-					{
+			{
 				title: "环城东路",
 				value: "环城东路"
 			},
-					{
+			{
 				title: "环城南路",
 				value: "环城南路"
 			},
-					{
+			{
 				title: "金沙江路",
 				value: "金沙江路"
 			},
-					{
+			{
 				title: "李闸路",
 				value: "李闸路"
 			},
-					{
+			{
 				title: "闽江路",
 				value: "闽江路"
 			},
-					{
+			{
 				title: "南沙路",
 				value: "南沙路"
 			},
-					{
+			{
 				title: "琴湖路",
 				value: "琴湖路"
 			},
-					{
+			{
 				title: "青墩塘路",
 				value: "青墩塘路"
 			},
-					{
+			{
 				title: "沙家浜路",
 				value: "沙家浜路"
 			},
-					{
+			{
 				title: "嵩山路",
 				value: "嵩山路"
 			},
-					{
+			{
 				title: "锁澜路",
 				value: "锁澜路"
 			},
@@ -723,19 +716,19 @@ body{background-color:#fbf9ff;}
 				title: "泰安街",
 				value: "泰安街"
 			},
-					{
+			{
 				title: "泰山路",
 				value: "泰山路"
 			},
-					{
+			{
 				title: "西门大街",
 				value: "西门大街"
 			},
-					{
+			{
 				title: "湘江路",
 				value: "湘江路"
 			},
-					{
+			{
 				title: "新颜东路",
 				value: "新颜东路"
 			},
@@ -743,30 +736,30 @@ body{background-color:#fbf9ff;}
 				title: "甬江路",
 				value: "甬江路"
 			},
-					{
+			{
 				title: "虞山北路",
 				value: "虞山北路"
 			},
-					{
+			{
 				title: "元和路",
 				value: "元和路"
 			},
-					{
+			{
 				title: "长江路",
 				value: "长江路"
 			},
-					{
+			{
 				title: "昭文路",
 				value: "昭文路"
 			},
-					{
+			{
 				title: "珠江路",
 				value: "珠江路"
 			},
-		        ],
-				max:5,
-		        onChange: function(d) {
-		console.log(this, d);
+		],
+		max:5,
+		onChange: function(d) {
+			console.log(this, d);
         }
       });
     </script>
@@ -776,27 +769,26 @@ body{background-color:#fbf9ff;}
             <div class="weui_textarea_counter"><span id='textarea_num'>限200字</span></div>
         </div>
     </div>
-          <script>
+<script>
 $(function(){
-	$(".weui_textarea").on("input paste" , function(){
-				var num_left=$(this).val().length;
-				if((200-num_left)<0){
-					$("#textarea_num").text("超出"+(num_left-200)+"字");
-					$("#textarea_num").css("color","#E44443");
-				}else{
-					$("#textarea_num").text((num_left)+"字");
-					$("#textarea_num").css("color","#999999");
-				}
-			});
-
+$(".weui_textarea").on("input paste", function(){
+		var num_left=$(this).val().length;
+		if((200-num_left)<0){
+			$("#textarea_num").text("超出"+(num_left-200)+"字");
+			$("#textarea_num").css("color","#E44443");
+		}else{
+			$("#textarea_num").text((num_left)+"字");
+			$("#textarea_num").css("color","#999999");
+		}
+	});
 })
 </script> 		
-	</div>
+</div>
 	
-    <div class="weui_btn_area row">
-									<input type="hidden" name="token" value="Ioo4" />
-        <button class="weui_btn weui_btn_primary" name="submit" type="submit" id="showTool">立 即 提 交</button>
-    </div>
+	<div class="weui_btn_area row">
+		<input type="hidden" name="token" value="Ioo4" />
+		<button class="weui_btn weui_btn_primary" name="submit" type="submit" id="showTool">立 即 提 交</button>
+	</div>
 </form>
 </div>
 	<div class="weui_msg">
@@ -805,6 +797,12 @@ $(function(){
 		</div>
 	</div>
 <script type="text/javascript">
+	$('.weui_input').on('focus',function(){
+		$('.weui_msg').hide();
+	})
+	$('.weui_input').on('blur',function(){
+		$('.weui_msg').show();
+	})
 	$('#form').submit(function(){
         var member = /^[\u4E00-\u9FA5]{1,6}$/;
 		if($.trim($(':input[name="member"]').val())=='' || !member.test($.trim($('input[name="member"]').val()))){
@@ -888,7 +886,7 @@ $(function(){
 	});
 </script>
 </div>
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 	wx.config(jssdkconfig);
 	/*wx.config({      
@@ -953,9 +951,9 @@ $(function(){
 	}*/
 	
 	wx.ready(function () {
-		for(var i in sharedata){
+		/*for(var i in sharedata){
 			alert(sharedata[i])
-		}
+		}*/
 		wx.onMenuShareAppMessage(sharedata);
 		wx.onMenuShareTimeline(sharedata);
 		wx.onMenuShareQQ(sharedata);
@@ -964,6 +962,6 @@ $(function(){
 	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 		WeixinJSBridge.call('showOptionMenu');
 	});
-	</script>
+</script>
 </body>
 </html>
