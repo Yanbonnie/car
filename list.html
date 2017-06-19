@@ -44,9 +44,9 @@
 		border-bottom:2px #dedede dashed;
 		padding:10px 0;
 		position: relative;
-		font-size: 12px;;
+		font-size: 14px;;
 	}
-	.list ul li a{
+	.list ul li .a{
 		position: absolute;
 		width: 60px;
 		height: 25px;
@@ -81,6 +81,9 @@
 	}
 	/*等待支付*/
 	.list ul .pay a{
+		display: block;
+	}
+	.list ul .pay .a{
 		color: #fff;
 		border: 1px #fe1c1e solid;
 		background: #fe1c1e;
@@ -94,7 +97,7 @@
 	} 
 
 	/*取消*/
-	.list ul .cancel a{
+	.list ul .cancel .a{
 		color: #fff;
 		border: 1px #a6a6a6 solid;
 		background: #a6a6a6;
@@ -107,7 +110,7 @@
 		color: #a6a6a6;
 	} 
 	/*正在计价*/
-	.list ul .wait a{
+	.list ul .wait .a{
 		color: #fff;
 		border: 1px #fd945b solid;
 		background: #fd945b;
@@ -127,21 +130,6 @@
 	<script type="text/javascript" src="./js/vue.min.js"></script>
 	<script src="./js/jquery-weui.min.js"></script>
     <script type="text/javascript">
-	/*if(navigator.appName == 'Microsoft Internet Explorer'){
-		if(navigator.userAgent.indexOf("MSIE 5.0")>0 || navigator.userAgent.indexOf("MSIE 6.0")>0 || navigator.userAgent.indexOf("MSIE 7.0")>0) {
-			alert('您使用的 IE 浏览器版本过低, 推荐使用 Chrome 浏览器或 IE8 及以上版本浏览器.');
-		}
-	}
-		window.sysinfo = {
-		'uniacid': '3',
-		'acid': '3',
-		'siteroot': 'http://www.df-sj.cn/',
-		'siteurl': 'http://www.df-sj.cn/app/index.php?i=3&c=entry&weid=3&id=18&do=mydayu_form&m=dayu_form',
-		'attachurl': 'http://www.df-sj.cn/attachment/',
-		'attachurl_local': 'http://www.df-sj.cn/attachment/',
-		'MODULE_URL': 'http://www.df-sj.cn/addons/dayu_form/',
-		'cookie' : {'pre': '21f9_'}
-	};*/
 	
 	// jssdk config 对象
 	jssdkconfig = null || {};
@@ -186,19 +174,6 @@
 		'openCard'
 	];
 	
-	</script>
-	
-	<script>
-	/*function _removeHTMLTag(str) {
-		if(typeof str == 'string'){
-			str = str.replace(/<script[^>]*?>[\s\S]*?<\/script>/g,'');
-			str = str.replace(/<style[^>]*?>[\s\S]*?<\/style>/g,'');
-			str = str.replace(/<\/?[^>]*>/g,'');
-			str = str.replace(/\s+/g,'');
-			str = str.replace(/&nbsp;/ig,'');
-		}
-		return str;
-	}*/
 	</script>
 	<script type="text/javascript">
 		$(function(){
@@ -245,31 +220,37 @@
 		<div id="list" class="list">
 			<ul>
 				<li class="pay">
-					<p>投保单号：201725647895</p>
-					<p>投保单位：永和保险</p>
-					<p>投保车辆：浙Acy768</p>
-					<p>支付金额：---元</p>
-					<p>投保时间：2017-02-24 21:43:56</p>
+					<a href="detail.html">
+						<p>投保单号：201725647895</p>
+						<p>投保单位：永和保险</p>
+						<p>投保车辆：浙Acy768</p>
+						<p>支付金额：---元</p>
+						<p>投保时间：2017-02-24 21:43:56</p>
+					</a>
 					<p class="tip"><i class="weui_icon_warn"></i>等待支付</p>
-					<a href="#">支付</a>
+					<a class="a" href="#">支付</a>
 				</li>
 				<li class="cancel">
-					<p>投保单号：201725647895</p>
-					<p>投保单位：永和保险</p>
-					<p>投保车辆：浙Acy768</p>
-					<p>支付金额：---元</p>
-					<p>投保时间：2017-02-24 21:43:56</p>
+					<a href="detail.html">
+						<p>投保单号：201725647895</p>
+						<p>投保单位：永和保险</p>
+						<p>投保车辆：浙Acy768</p>
+						<p>支付金额：---元</p>
+						<p>投保时间：2017-02-24 21:43:56</p>
+					</a>
 					<p class="tip"><i class="weui_icon_cancel"></i>已取消</p>
-					<a href="#">删除</a>
+					<a class="a" href="#">删除</a>
 				</li>
 				<li class="wait">
-					<p>投保单号：201725647895</p>
-					<p>投保单位：永和保险</p>
-					<p>投保车辆：浙Acy768</p>
-					<p>支付金额：---元</p>
-					<p>投保时间：2017-02-24 21:43:56</p>
+					<a href="detail.html">
+						<p>投保单号：201725647895</p>
+						<p>投保单位：永和保险</p>
+						<p>投保车辆：浙Acy768</p>
+						<p>支付金额：---元</p>
+						<p>投保时间：2017-02-24 21:43:56</p>
+					</a>
 					<p class="tip"><i class="weui_icon_info "></i>正在计价</p>
-					<a href="#">取消</a>
+					<a class="a" href="#">取消</a>
 				</li>
 			</ul>
 		</div>
@@ -328,39 +309,6 @@
 		sharedata['link'] = sharedata['link'] || $_share['link'];
 		sharedata['imgUrl'] = sharedata['imgUrl'] || $_share['imgUrl'];
 	}
-
-	/*function tomedia(src) {
-		if(typeof src != 'string')
-			return '';
-		if(src.indexOf('http://') == 0 || src.indexOf('https://') == 0) {
-			return src;
-		} else if(src.indexOf('../addons') == 0 || src.indexOf('../attachment') == 0) {
-			src=src.substr(3);
-			return window.sysinfo.siteroot + src;
-		} else if(src.indexOf('./resource') == 0) {
-			src=src.substr(2);
-			return window.sysinfo.siteroot + 'app/' + src;
-		} else if(src.indexOf('images/') == 0) {
-			return window.sysinfo.attachurl+ src;
-		}
-	}
-	
-	if(sharedata.imgUrl == ''){
-		var _share_img = $('body img:eq(0)').attr("src");
-		if(_share_img == ""){
-			sharedata['imgUrl'] = window.sysinfo.attachurl + 'images/global/wechat_share.png';
-		} else {
-			sharedata['imgUrl'] = tomedia(_share_img);
-		}
-	}
-	
-	if(sharedata.desc == ''){
-		var _share_content = _removeHTMLTag($('body').html());
-		if(typeof _share_content == 'string'){
-			sharedata.desc = _share_content.replace($_share['title'], '')
-		}
-	}
-	*/
 	wx.ready(function () {
 		wx.onMenuShareAppMessage(sharedata);
 		wx.onMenuShareTimeline(sharedata);
